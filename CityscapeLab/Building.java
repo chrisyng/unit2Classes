@@ -40,6 +40,7 @@ public class Building
         
     /**
      * Draws a building based on variables initialized in constructor
+     * @param Graphics2D g2 the object that draws the Building
      */
     public void draw(Graphics2D g2)
     {
