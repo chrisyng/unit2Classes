@@ -30,13 +30,13 @@ public class CityscapeComponent extends JComponent
         sky.draw(g2);        
         Hill hill = new Hill(0, this.getHeight()-this.getHeight()/4, this.getWidth(), this.getHeight()/4);
         hill.draw(g2);    
-        Building building1 = new Building(space, randomGen.nextInt(this.getHeight())-hill.getHillHeight(), space, this.getHeight(), hill);        
+        Building building1 = new Building(space, randomGen.nextInt(this.getHeight()-hill.getHillHeight()), space, this.getHeight(), hill);        
         building1.draw(g2);
-        Building building2 = new Building(space*3, randomGen.nextInt(this.getHeight())-hill.getHillHeight(), space, this.getHeight(), hill);        
+        Building building2 = new Building(space*3, randomGen.nextInt(this.getHeight()-hill.getHillHeight()), space, this.getHeight(), hill);        
         building2.draw(g2);
-        Building building3 = new Building(space*5, randomGen.nextInt(this.getHeight())-hill.getHillHeight(), space, this.getHeight(), hill);        
+        Building building3 = new Building(space*5, randomGen.nextInt(this.getHeight()-hill.getHillHeight()), space, this.getHeight(), hill);        
         building3.draw(g2);
-        Building building4 = new Building(space*7, randomGen.nextInt(this.getHeight())-hill.getHillHeight(), space, this.getHeight(), hill);        
+        Building building4 = new Building(space*7, randomGen.nextInt(this.getHeight()-hill.getHillHeight()), space, this.getHeight(), hill);        
         building4.draw(g2);
         Window window1 = new Window(building1);
         window1.draw(g2);
@@ -48,8 +48,9 @@ public class CityscapeComponent extends JComponent
         window4.draw(g2);
         
         MoonOrSun moonOrSun = new MoonOrSun(0, this.getHeight()/8, 100, 100);
-        moonOrSun.drawMoon(g2);        
+        moonOrSun.drawMoon(g2);
         /*
+        
         while (moonOrSun.getXPos() < this.getWidth()+150)
         {
             
@@ -76,13 +77,12 @@ public class CityscapeComponent extends JComponent
                     isNight = true;
                     moonOrSun.resetPos();
                 }
-                
-            }            
+                            }            
         } 
         */
         
     }
-    
+        
     public boolean getNight()
     /**
      * Returns whether or not the CityScape is in night or day

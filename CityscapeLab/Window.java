@@ -27,14 +27,20 @@ public class Window
         int buildingWidth = buildingDrawn.getBuildingWidth();
         int windowWidth = buildingWidth/5;
         int distanceFromLeft = windowWidth;
-        for (int i=1; i<=2; i++)
-        {            
-            Rectangle window = new Rectangle(leftSide+distanceFromLeft, topSide + 20, windowWidth, 20);
-            distanceFromLeft = distanceFromLeft + 2*windowWidth;
-            g2.setColor(Color.YELLOW);
-            g2.draw(window);
-            g2.fill(window);
-        }        
+        int numFloors = buildingHeight / 40;
+        if (numFloors>1)
+        {
+        for (int i=1; i<numFloors; i++)
+        {
+            for (int i=1; i<=2; i++)
+            {            
+                Rectangle window = new Rectangle(leftSide+distanceFromLeft, topSide + 20, windowWidth, 20);
+                distanceFromLeft = distanceFromLeft + 2*windowWidth;
+                g2.setColor(Color.YELLOW);
+                g2.draw(window);
+                g2.fill(window);
+            }       
+        }
     }
     
 }
