@@ -12,6 +12,7 @@ import java.util.Random;
  */
 public class CityscapeComponent extends JComponent
 {
+    /** boolean to hold value of night or not */
     private boolean isNight=true;    
     /**
      * PaintComponent instantiates objects of the cityscape objects and draws them.
@@ -25,7 +26,7 @@ public class CityscapeComponent extends JComponent
         Graphics2D g2 = (Graphics2D) g;
         int space = this.getWidth()/9; 
         Random randomGen = new Random();        
-        Sky sky = new Sky(this.getWidth(), this.getHeight(), this);
+        Sky sky = new Sky(this);
         sky.draw(g2);        
         Hill hill = new Hill(0, this.getHeight()-this.getHeight()/4, this.getWidth(), this.getHeight()/4);
         hill.draw(g2);    
@@ -39,39 +40,53 @@ public class CityscapeComponent extends JComponent
         building4.draw(g2);
         Window window1 = new Window(building1);
         window1.draw(g2);
+        Window window2 = new Window(building2);
+        window2.draw(g2);
+        Window window3 = new Window(building3);
+        window3.draw(g2);
+        Window window4 = new Window(building4);
+        window4.draw(g2);
+        
         MoonOrSun moonOrSun = new MoonOrSun(0, this.getHeight()/8, 100, 100);
         moonOrSun.drawMoon(g2);        
-        
-        while (moonOrSun.getXPos() < this.getWidth())
+        /*
+        while (moonOrSun.getXPos() < this.getWidth()+150)
         {
+            
             while (isNight)
-            {                
+            {
+                sky.changeColor(Color.BLACK);                
                 moonOrSun.changePos();
-                moonOrSun.drawMoon(g2);
-                this.repaint();
+                moonOrSun.drawMoon(g2);                
                 if (moonOrSun.getXPos() >= this.getWidth())
                 {
                     isNight = false;
                     moonOrSun.resetPos();
                 }
+                
             }
+            
             while (!isNight)
-            {                
+            {
+                sky.changeColor(Color.BLUE);                
                 moonOrSun.changePos();
-                moonOrSun.drawSun(g2);
-                this.repaint();
+                moonOrSun.drawSun(g2);                
                 if (moonOrSun.getXPos() >= this.getWidth())
                 {
                     isNight = true;
                     moonOrSun.resetPos();
                 }
-            }
+                
+            }            
         } 
+        */
+        
     }
     
     public boolean getNight()
     /**
      * Returns whether or not the CityScape is in night or day
+     * @return the value of the night variable
      */
     {
         return this.isNight;

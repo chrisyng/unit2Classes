@@ -10,32 +10,48 @@ import java.awt.Graphics2D;
  */
 public class Sky
 {
+    /** windowHeight height of the JFrame window */
     private int windowHeight;
+    /** windowWidth width of the JFrame window */
     private int windowWidth;
+    /** component component that takes this Sky object */
     private CityscapeComponent component;
-    public Sky(int windowWidth, int windowHeight, CityscapeComponent component)
+    /** skyColor color of this sky, changes based on isNight */
+    private Color skyColor=Color.BLACK;
+    /**
+     * default constructor for class sky
+     * @param CityscapeComponent component component object that the sky is drawn into
+     */
+    public Sky(CityscapeComponent component)
+    
     {
-        this.windowWidth = windowWidth;
-        this.windowHeight = windowHeight;
+        this.windowWidth = component.getWidth();
+        this.windowHeight = component.getHeight();
         this.component = component;
     }
     
-    public void draw(Graphics2D g2)
+    /**
+     * changes the background color of the sky
+     * @param skyColor color to set the sky to
+     */
+    public void changeColor(Color skyColor)
+    
     {
-        Rectangle sky = new Rectangle(0, 0, windowWidth, windowHeight);
-        if (component.getNight())
-        {
-            g2.setColor(Color.BLACK);
-            g2.draw(sky);
-            g2.fill(sky);
-        }
-        
-        if (!component.getNight())
-        {
-            g2.setColor(Color.BLUE);
-            g2.draw(sky);
-            g2.fill(sky);
-        }        
+        this.skyColor = skyColor;
+    }
+    
+    /**
+     * method that draws a rectangle for sky, and adjusts the color
+     * @param g2 graphics2D object to draw the sky rectangle with
+     */
+    public void draw(Graphics2D g2)
+    
+    {
+        Rectangle sky = new Rectangle(0, 0, windowWidth, windowHeight);        
+        g2.setColor(skyColor);
+        g2.draw(sky);
+        g2.fill(sky);
     }     
+}     
 
-}
+

@@ -33,36 +33,41 @@ public class MoonOrSun
         this.width = width;
         this.height = height;
     }
-    
-    public void changePos()
     /**
      * changes x-position of the moon to move it across the sky
      * @post moon has a new xLeft position to the right
      */
+    public void changePos()
+    
     {
         this.xLeft = this.xLeft +150;
     }
-    
-    public void resetPos()
     /**
      * moves moon back to xLeft of 0
      * @post moon will be moved back to the far left of the screen
      */
+    public void resetPos()
+    
     {
         this.xLeft = 0;
-    }    
+    }
     
+     /**
+     * gives the x left position of this moon
+     * @return int of the xleft position
+     */
     public int getXPos()
+   
     {
         return this.xLeft;
     } 
 
-    
-    public void drawSun(Graphics2D g2)
     /**
      * creates a yellow ellipse object and fills it
      * @param Graphics2D g2 the graphics object which will draw the sun 
      */
+    public void drawSun(Graphics2D g2)
+    
     {        
         Ellipse2D.Double sun = new Ellipse2D.Double(xLeft, yTop, width, height);
         g2.setColor(Color.YELLOW);
@@ -70,11 +75,12 @@ public class MoonOrSun
         g2.fill(sun);
     }
     
-    public void drawMoon(Graphics2D g2)
     /**
      * creates a yellow ellipse object and fills it
      * @param Graphics2D g2 the graphics object which will draw the moon
      */
+    public void drawMoon(Graphics2D g2)
+    
     {
         Ellipse2D.Double moon = new Ellipse2D.Double(xLeft, yTop, width, height);
         g2.setColor(Color.YELLOW);
