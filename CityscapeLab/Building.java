@@ -11,7 +11,7 @@ import java.awt.Graphics2D;
  */
 public class Building
 {
-    /** int specifying building's height */
+    /** int specifying height of the JFrame object */
     private int windowHeight;
     /** int specifying building's width */
     private int width;
@@ -19,8 +19,7 @@ public class Building
     private int xleft;
     /** int specifying top coordinate */
     private int ytop;
-    /** int for storing height of the hill object in CityScape */
-    private int hillHeight;
+    private Hill referenceHill;
     /**
      * Default constructor for objects of class Building
      * @param windowHeight the height of the JFrame window
@@ -28,32 +27,48 @@ public class Building
      * @param xleft starting x position
      * @param ytop starting y position
      */
-    public Building(int xleft, int ytop, int width, int windowHeight)
+       
+    public Building(int xleft, int ytop, int width, int windowHeight, Hill currentHill)
     {
         this.windowHeight = windowHeight;
         this.width = width;
         this.xleft = xleft;
-        this.ytop = ytop;
-    }
+        this.ytop = ytop;        
+        this.referenceHill = currentHill;
+    }    
     
-    public void setHillHeight(int hillHeight)
-    {
-        this.hillHeight = hillHeight;
-    }   
         
     /**
      * Draws a building based on variables initialized in constructor
      */
     public void draw(Graphics2D g2)
     {
-       Rectangle mainBuilding = new Rectangle(xleft, ytop, width, windowHeight-ytop-hillHeight);
+       Rectangle mainBuilding = new Rectangle(xleft, ytop, width, windowHeight-ytop-referenceHill.getHillHeight());
        g2.setColor(Color.GRAY);
        g2.draw(mainBuilding);
-       g2.fill(mainBuilding);
-              
-    }    
-       
+       g2.fill(mainBuilding);              
+    }   
     
+    public int getBuildingHeight()
+    {
+        return windowHeight-ytop-referenceHill.getHillHeight();
+    }
+    
+    public int getBuildingWidth()
+    {
+        return this.width;
+    }
+    
+    public int getStartXPos()
+    {
+        return this.xleft;
+    }
+    
+    public int getStartYPos()
+    {
+        return this.ytop;
+    }   
+   
 }
 
 

@@ -20,15 +20,7 @@ public class Hill
         this.hillWidth = hillWidth;
         this.yTop = yTop;
         this.xLeft = xLeft;        
-    }
-    
-    public int getHillHeight()
-    /**
-     * Accessor method which returns the height of this hill
-     */
-    {
-        return this.hillHeight;
-    }   
+    }    
     
     /**
      * creates a hill rectangle and draws it with the graphics object
@@ -40,5 +32,10 @@ public class Hill
         g2.draw(grass);
         g2.fill(grass);
     }
+    
+    public int getHillHeight()
+    {
+        return this.hillHeight;
+    }    
 
 }

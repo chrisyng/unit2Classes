@@ -8,7 +8,7 @@ import java.awt.Color;
  * @author Christopher Ng   
  * @version 10/8/14
  */
-public class Moon
+public class MoonOrSun
 {
     /** starting left position coordinate */
     private int xLeft;
@@ -25,7 +25,7 @@ public class Moon
      * @param width width of moon
      * @param height height of moon
      */
-    public Moon(int xLeft, int yTop, int width, int height)
+    public MoonOrSun(int xLeft, int yTop, int width, int height)
     {
         this.xLeft = xLeft;
         this.yTop = yTop;
@@ -38,10 +38,10 @@ public class Moon
      */
     public void draw(Graphics2D g2)
     {       
-        Ellipse2D.Double moon = new Ellipse2D.Double(xLeft, yTop, width, height);
+        Ellipse2D.Double moonOrSun = new Ellipse2D.Double(xLeft, yTop, width, height);
         g2.setColor(Color.YELLOW);
-        g2.draw(moon);        
-        g2.fill(moon);
+        g2.draw(moonOrSun);        
+        g2.fill(moonOrSun);
     }
     
     public void changePos()
@@ -49,5 +49,9 @@ public class Moon
         this.xLeft = this.xLeft +150;
     }
     
-
+    public int getXPos()
+    {
+        return this.xLeft;
+    } 
+    
 }
