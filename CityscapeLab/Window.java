@@ -10,7 +10,7 @@ import java.awt.Color;
 public class Window
 {
     // instance variables - replace the example below with your own
-    private Building buildingDrawn;
+    private Building buildingDrawn;    
     /**
      * Constructor for objects of class Window
      */
@@ -19,28 +19,49 @@ public class Window
         this.buildingDrawn = building;
     }
     
+    private enum IsOn {LIGHT_IS_ON, LIGHT_IS_OFF}
+
     public void draw (Graphics2D g2)
     {
         int leftSide = buildingDrawn.getStartXPos();
         int topSide = buildingDrawn.getStartYPos();
         int buildingHeight = buildingDrawn.getBuildingHeight();
         int buildingWidth = buildingDrawn.getBuildingWidth();
-        int windowWidth = buildingWidth/5;
-        int distanceFromLeft = windowWidth;
+        int windowWidth = buildingWidth/5;        
         int numFloors = buildingHeight / 40;
-        if (numFloors>1)
-        {
-        for (int i=1; i<numFloors; i++)
-        {
-            for (int i=1; i<=2; i++)
+        int distanceDown = 20;        
+
+        for (int i=1; i<=numFloors; i++)
+        {            
+            int distanceFromLeft = windowWidth;
+            for (int j=1; j<=2; j++)
             {            
-                Rectangle window = new Rectangle(leftSide+distanceFromLeft, topSide + 20, windowWidth, 20);
+                Rectangle window = new Rectangle(leftSide+distanceFromLeft, topSide + distanceDown, windowWidth, 20);
                 distanceFromLeft = distanceFromLeft + 2*windowWidth;
-                g2.setColor(Color.YELLOW);
+                IsOn isOn;
+                double chance = Math.random();
+                if (chance<0.5)
+                {
+                    isOn = IsOn.LIGHT_IS_ON;
+                }
+                else
+                {
+                    isOn = IsOn.LIGHT_IS_OFF;
+                }
+                switch (isOn)
+                {
+                    case LIGHT_IS_ON:
+                    g2.setColor(Color.YELLOW);
+                    break;
+                    case LIGHT_IS_OFF:
+                    g2.setColor(Color.BLACK);
+                    break;                    
+                }                
                 g2.draw(window);
                 g2.fill(window);
-            }       
+            }
+            distanceDown += 40;
         }
+
     }
-    
 }

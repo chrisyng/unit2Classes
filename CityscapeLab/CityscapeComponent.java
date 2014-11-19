@@ -37,15 +37,17 @@ public class CityscapeComponent extends JComponent
         Building building3 = new Building(space*5, randomGen.nextInt(this.getHeight()-hill.getHillHeight()), space, this.getHeight(), hill);        
         building3.draw(g2);
         Building building4 = new Building(space*7, randomGen.nextInt(this.getHeight()-hill.getHillHeight()), space, this.getHeight(), hill);        
-        building4.draw(g2);
+        building4.draw(g2);       
+        
         Window window1 = new Window(building1);
-        window1.draw(g2);
+        window1.draw(g2);        
         Window window2 = new Window(building2);
         window2.draw(g2);
         Window window3 = new Window(building3);
         window3.draw(g2);
         Window window4 = new Window(building4);
         window4.draw(g2);
+        
         
         MoonOrSun moonOrSun = new MoonOrSun(0, this.getHeight()/8, 100, 100);
         moonOrSun.drawMoon(g2);
